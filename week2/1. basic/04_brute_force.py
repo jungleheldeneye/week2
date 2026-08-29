@@ -27,6 +27,22 @@
 """
 
 def find_two_sum_pairs(nums, target):
+
+    answer = list()
+    i = 0
+    while i < len(nums):
+    
+      for j in range(len(nums)):
+       if i < j:
+        if nums[i] + nums[j] == target:
+           answer.append((i, j))
+      i+=1
+    return answer
+    
+        
+
+
+         
     """
     배열에서 합이 target이 되는 모든 인덱스 쌍 찾기
     
