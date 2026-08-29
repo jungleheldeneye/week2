@@ -26,6 +26,21 @@
 """
 
 def is_valid_parentheses(s):
+    stack = []
+
+    for n in range(len(s)):
+     if s[n] == "(":
+        stack.append("(")
+     elif stack == []:
+          return False
+     else:
+        stack.pop()
+
+    if stack == []:
+     return True
+    else:
+       return False
+
     """
     괄호 짝이 맞는지 확인
     
@@ -35,7 +50,6 @@ def is_valid_parentheses(s):
     Returns:
         올바른 괄호면 True, 아니면 False
     """
-    stack = []
     
     # TODO: 문자열의 각 문자를 순회
     ## : 여는 괄호 '('면 스택에 추가
