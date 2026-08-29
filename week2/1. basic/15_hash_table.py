@@ -31,6 +31,20 @@
 """
 
 def manage_grades(students):
+
+
+    added = sum(students.values())
+    stu =len(students)
+    tempsc = 0
+    temps = ""
+    average = added / stu
+    for n in students:
+        if tempsc < students[n]:
+            tempsc = students[n]
+            temps = n
+    
+    return average, temps, tempsc
+
     """
     학생 성적 관리 시스템
     
@@ -50,6 +64,9 @@ def manage_grades(students):
     return average, top_student, top_score
 
 def find_student_score(students, name):
+
+    score = students.get(name)
+    return score
     """
     특정 학생의 점수 조회
     
