@@ -27,6 +27,17 @@
 from collections import deque
 
 def process_print_queue(jobs):
+
+    queue = deque(jobs)
+    processed = []
+    while queue:
+        processed.append(queue[0])
+        print(f"처리: {queue[0]}")
+        queue.popleft()
+        
+        
+    return processed
+
     """
     프린터 작업을 순서대로 처리
     
@@ -44,9 +55,7 @@ def process_print_queue(jobs):
     # TODO: 큐가 비어있지 않은 동안 반복
     ## 큐에서 작업 꺼내기
     ## 작업 처리 (출력 및 리스트에 추가)
-    pass
-    
-    return processed
+
 
 # 테스트 케이스
 if __name__ == "__main__":
