@@ -24,6 +24,26 @@
 """
 
 def find_max_divide_conquer(arr, left, right):
+    if left == right:
+        return arr[left]
+
+
+    mid = (left + right)//2
+    leftmax = find_max_divide_conquer(arr, left, mid)
+    rightmax = find_max_divide_conquer(arr, mid+1, right)
+    if leftmax >= rightmax:
+     return leftmax
+    else:
+       return rightmax
+
+    
+
+    
+
+
+    
+
+
     """
     분할 정복으로 최댓값 찾기
     
