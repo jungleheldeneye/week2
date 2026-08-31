@@ -109,26 +109,35 @@ combinations(n, k) -> list[list[int]]
 
 
 def combinations(n: int, k: int) -> list:
-    """
-    1 부터 n 까지 숫자 중 k 개를 선택하는 모든 조합을 반환합니다.
+   current_combination =[]
+   result = []
 
-    Args:
-        n: 전체 숫자 개수 (1, 2, ..., n)
-        k: 선택할 개수
 
-    Returns:
-        모든 조합을 담은 리스트(예: [[1,2], [1,3], ...])
-    """
-    result = []  # 완성된 조합을 모아 둘 곳
 
-    def backtrack(start: int, current_combination: list) -> None:
-        """
+   def backtrack(start: int, current_combination: list):
+    if len(current_combination) == k:        
+      result.append(current_combination.copy())
+      return
+
+    for x in range(start, n+1):
+
+        num = x
+        current_combination.append(x)
+        backtrack (num+1, current_combination)
+        current_combination.pop()  
+
+
+   backtrack(1, [])
+
+   return result
+
+"""
         재귀(백트래킹) 헬퍼 함수.
 
         Args:
             start: 이번에 시도해볼 수 있는 가장 작은 숫자
             current_combination: 지금까지 골라 둔 숫자들 (탐색 중)
-        """
+"""
 
         # ──────────────────────────────────────────────────────────────────
         # [Level 1] 종료 조건 (Base Case)
@@ -143,8 +152,7 @@ def combinations(n: int, k: int) -> list:
         # TODO(Level 1): 아래 두 줄을 직접 작성하세요.
         # if len(current_combination) == ...:
         #     result.append(...)
-        #     return
-        pass  
+pass  
 
         # ──────────────────────────────────────────────────────────────────
         # [Level 2] 가지치기 반복문
@@ -154,7 +162,7 @@ def combinations(n: int, k: int) -> list:
         # - 반복문 변수 이름은 num 으로 추천 (의미: "이번에 고를 숫자").
         #
         # TODO(Level 2): 아래 한 줄을 작성하세요.
-        pass
+pass
 
             # ──────────────────────────────────────────────────────────────
             # [Level 3] 백트래킹 3단계
@@ -170,8 +178,7 @@ def combinations(n: int, k: int) -> list:
             # current_combination.pop()
 
     # 처음 호출: 시작 숫자는 1, 지금까지 고른 숫자는 비어 있음
-    backtrack(1, [])
-    return result
+
 
 
 # ============================================================================
