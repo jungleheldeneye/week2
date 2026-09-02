@@ -34,6 +34,27 @@ def merge(arr, left, mid, right):
     """
     # TODO: 왼쪽과 오른쪽 부분 배열을 임시 배열로 복사
     pass
+
+    templ = arr[left:mid+1]
+    tempr = arr[mid+1:right+1] 
+    tempb = []
+
+
+    while len(templ) != 0 and len(tempr) != 0:
+     if templ[0] < tempr[0]:
+                tempb.append(templ[0])
+                templ.pop(0)
+                
+     else:
+                tempb.append(tempr[0])
+                tempr.pop(0)
+
+    tempb = tempb + templ + tempr
+    arr[left:right+1] = tempb
+    return arr
+
+
+
     
     # TODO: 두 배열을 병합
     pass
@@ -48,6 +69,17 @@ def merge(arr, left, mid, right):
     pass
 
 def merge_sort_helper(arr, left, right):
+    if left < right:
+     mid = (left+right)//2
+     merge_sort_helper(arr, left, mid)
+     merge_sort_helper(arr, mid+1, right)
+     merge(arr, left, mid, right)
+    return arr
+     
+
+
+    
+
     """
     머지 정렬 재귀 함수
     
