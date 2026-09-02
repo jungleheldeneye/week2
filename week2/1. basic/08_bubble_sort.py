@@ -83,7 +83,7 @@ def bubble_sort_optimized(arr):
                 arr[j] = newj
                 arr[j+1] = newj2
                 swapped = True
-        if swapped == True:
+        if swapped == False:
             break
 
     return arr            
