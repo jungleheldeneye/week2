@@ -14,7 +14,7 @@
 - LCM: 최소공배수
 
 예제:
-입력: a = 48, b = 18
+입력: a = 48, b = 18 
 출력: 
   GCD = 6
   LCM = 144
@@ -25,6 +25,17 @@
 """
 
 def gcd(a, b):
+
+    if b == 0:
+        return a
+    else:
+       newa = b
+       newb = a % b 
+       a = newa
+       b = newb
+    return gcd (a,b)
+
+        
     """
     유클리드 호제법을 사용한 최대공약수 계산
     
@@ -40,6 +51,16 @@ def gcd(a, b):
     pass
 
 def gcd_iterative(a, b):
+     
+    while b !=0:
+       newa = b
+       newb = a % b 
+       a = newa
+       b = newb
+    return a
+    
+
+    
     """
     반복문을 사용한 최대공약수 계산
     
@@ -54,6 +75,18 @@ def gcd_iterative(a, b):
     pass
 
 def lcm(a, b):
+    inita = a
+    initb = b
+    while b !=0:
+           newa = b
+           newb = a % b 
+           a = newa
+           b = newb
+    gcd = a
+    lcm = (inita // gcd) * (initb // gcd) * gcd
+    return lcm
+
+
     """
     최소공배수 계산
     
@@ -67,6 +100,19 @@ def lcm(a, b):
     pass
 
 def extended_gcd(a, b):
+
+    inita = a
+    initb = b
+
+    if b == 0:
+        return (a, 1, 0)
+
+    g, x, y = extended_gcd(b, a % b)
+
+    newx = y
+    newy = x - (a // b) * y
+
+    return (g, newx, newy)
     """
     확장 유클리드 호제법
     ax + by = gcd(a, b)를 만족하는 x, y를 찾음
@@ -82,9 +128,36 @@ def extended_gcd(a, b):
     # recursive case
     # 역추적하며 x, y 계산
     pass
+from math import sqrt
 
 def is_prime(n):
-    """
+     if n<2:
+      return False
+     elif n == 2:
+      return True
+     elif n % 2 ==0:
+      return False
+     else:
+         root = sqrt(n)
+         add = 0
+         for a in range(3, int(root) +1, 2):
+              
+              if n % a != 0:
+                  add+=1
+         if len(range(3, int(root) +1, 2)) == add:
+     
+
+            return True
+              
+              
+
+        
+     
+    
+
+
+     
+"""
     소수 판별
     
     Args:
@@ -97,7 +170,7 @@ def is_prime(n):
     # n이 2보다 작으면 False
     # 2부터 sqrt(n)까지 나누어 떨어지는지 확인    
     # 3부터 sqrt(n)까지 홀수만 확인
-    pass 
+pass 
 
 # 테스트 케이스
 if __name__ == "__main__":
